@@ -1,0 +1,9 @@
+disney : mouse.o disney.o
+	CC -o disney mouse.o disney.o
+disney.o : disney.cpp disney.h
+	CC -c disney.cpp
+mouse.o : mouse.cpp mouse.h
+	CC -c mouse.cpp
+clean:
+	rm -rf *.o SunWS_cache
+

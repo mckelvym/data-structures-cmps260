@@ -1,0 +1,6 @@
+
+bag.o : bag.cpp bag.h
+	g++ -c bag.cpp
+clean:
+	rm -rf *.o SunWS_cache
+
