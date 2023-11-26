@@ -1,15 +1,13 @@
-# jmm0468
-# cmps260 s3
-# makefile 
-
-main : main.o employee.o arrayListType.o
-	CC -o main main.o employee.o arrayListType.o
-main.o : main.cpp employee.h arrayListType.h
-	CC -c main.cpp
-employee.o : employee.cpp employee.h
-	CC -c employee.cpp
-arrayListType.o : arrayListType.cpp arrayListType.h
-	CC -c arrayListType.cpp
+main : main.o linkedList.o
+	g++ -o main main.o linkedList.o
+main.o : main.cpp linkedList.h
+	g++ -c main.cpp
+linkedQueue.o : linkedQueue.cpp linkedQueue.h linkedNode.h
+	g++ -c linkedQueue.cpp
+linkedStack.o : linkedStack.cpp linkedStack.h linkedNode.h
+	g++ -c linkedStack.cpp
+linkedList.o : linkedList.cpp linkedList.h linkedNode.h
+	g++ -c linkedList.cpp
 
 clean:
 	rm -rf *.o SunWS_cache
