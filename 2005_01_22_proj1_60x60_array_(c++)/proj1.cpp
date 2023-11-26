@@ -9,14 +9,13 @@
 //  Program Description: This program uses multidimensional arrays
 //   of structs to simulate a city with wells, their population (around
 //   a certain cell), and the number of infections at that location.
-//  
+//
 //  --* Certification of Authenticity *--
 //  I certify that this assignment is entirely my own work.
 
 #include<iostream>
 #include<fstream>
 #include<stdlib.h>
-#include<conio.h>
 
 using namespace std;
 
@@ -34,13 +33,13 @@ struct cell{
 void menu(cell cells[ROWS][COLUMNS]);
 // pre:  passed a multidimensional array of structs, clears
 //       the screen and displays a menu of options.
-// post: passes the array to the appropriate "handler" 
+// post: passes the array to the appropriate "handler"
 //       function for further processing, or cycles over
 //       if a valid choice is not made
 void readData(ifstream& fin, cell cells[ROWS][COLUMNS]);
 // pre:  passed an input filestream for a file, and a multi-
 //       dimensional array
-// post: reads data from the input filestream into the 
+// post: reads data from the input filestream into the
 //       multidimensional array
 void defaultInitialize(cell cells[ROWS][COLUMNS]);
 // pre:  passed a multidimensional array of structs
@@ -61,7 +60,7 @@ void viewCell(cell cells[ROWS][COLUMNS]);
 //       in the array, and returns to the menu()
 void viewRates(cell cells[ROWS][COLUMNS]);
 // pre:  passed a multidimensional array of structs
-// post: displays to the screen the percentages of 
+// post: displays to the screen the percentages of
 //       (cases/population) for each cell in the array
 //       that has a value > 1.0%. Then returns to the menu()
 float viewAvg(cell cells[ROWS][COLUMNS]);
@@ -69,23 +68,27 @@ float viewAvg(cell cells[ROWS][COLUMNS]);
 // post: calculates the value of (total cases / total
 //       population) * 100 and returns the floating point value
 
+void getch(){
+    cin.get();
+}
+
 int main(){
     char achoice;
     ifstream fin;
-    
+
     cell cells[ROWS][COLUMNS];
     fin.open("data.dat", ios::in);
     // handle loading of saved data
-    readData(fin, cells);      
+    readData(fin, cells);
     fin.close();
     // proceed to main menu
-    menu(cells);  
-    return 0;  
+    menu(cells);
+    return 0;
 }
 
 void menu(cell cells[ROWS][COLUMNS]){
      char choice;
-     
+
      system("cls");
      cout << "Main Menu: " << endl << endl;
      cout << "1. Enter Data" << endl;
@@ -115,7 +118,7 @@ void menu(cell cells[ROWS][COLUMNS]){
             cout << "The average infection rate is " << viewAvg(cells) << "%" << endl;
             cout << endl << "Press Enter";
             getch();
-            menu(cells);            
+            menu(cells);
             break;
        case '0':
             // quit program
@@ -138,7 +141,7 @@ void menu(cell cells[ROWS][COLUMNS]){
             // re-show the menu
             menu(cells);
             break;
-     }    
+     }
 }
 void readData(ifstream& fin, cell cells[ROWS][COLUMNS]){
      if(fin == NULL)
@@ -146,7 +149,7 @@ void readData(ifstream& fin, cell cells[ROWS][COLUMNS]){
      else{
          for(int x = 0; x < ROWS; x++){
                  for(int y = 0; y < COLUMNS; y++){
-                         fin >> cells[x][y].population >> cells[x][y].cases;               
+                         fin >> cells[x][y].population >> cells[x][y].cases;
                  }
          }
      }
@@ -165,10 +168,10 @@ void saveToFile(ofstream& fout, cell cells[ROWS][COLUMNS]){
                      fout << cells[x][y].population << " "
                           << cells[x][y].cases << endl;
              }
-     }                     
+     }
 }
 void enterData(cell cells[ROWS][COLUMNS]){
-     int x,y;     
+     int x,y;
      system("cls");
      cout << "You chose to enter data." << endl << endl;
      cout << "Row #";
@@ -217,7 +220,7 @@ void viewRates(cell cells[ROWS][COLUMNS]){
                        counter = 0;
                        getch();
                      }
-                     temp = 0.0;                     
+                     temp = 0.0;
              }
      }
      cout << endl << endl << "Press Enter";
