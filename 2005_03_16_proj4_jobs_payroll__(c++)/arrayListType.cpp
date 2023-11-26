@@ -62,7 +62,7 @@ void arrayListType<elemType>::insertAt
 		{
 			for (i = length; i > location; i--)
 				list[i] = list[i - 1];	//move the elements down
-			list[location] = insertItem;	//insert the item at the 
+			list[location] = insertItem;	//insert the item at the
  										//specified position
 			length++;	//increment the length
 		}
@@ -100,8 +100,8 @@ void arrayListType<elemType>::retrieveAt
                      (int location, elemType& retItem)
 {
 	if (location < 0 || location >= length)
-	cout << "";
-    	//cout << "The location of the item to be retrieved is "<< "out of range." << endl;
+	    cout << "The location of the item to be retrieved is "
+             << "out of range." << endl;
 	else
 		retItem = list[location];
 } // retrieveAt
@@ -145,7 +145,7 @@ void arrayListType<elemType>::insert(const elemType& insertItem)
 {
 	int loc;
 	if (length == 0)					 //list is empty
-		list[length++] = insertItem; //insert the item and 
+		list[length++] = insertItem; //insert the item and
  									 //increment the length
 	else
 		if (length == maxSize)
@@ -153,7 +153,7 @@ void arrayListType<elemType>::insert(const elemType& insertItem)
 		else
 		{
 			loc = seqSearch(insertItem);
-			if (loc == -1)   //the item to be inserted 
+			if (loc == -1)   //the item to be inserted
 							//does not exist in the list
 				list[length++] = insertItem;
 			else
@@ -220,14 +220,14 @@ const arrayListType<elemType>& arrayListType<elemType>::operator=
 			(const arrayListType<elemType>& otherList)
 {
 	if (this != &otherList)	//avoid self-assignment
-	{				   
-	   delete [] list;				   
-	   maxSize = otherList.maxSize;		   
-       length = otherList.length;			   
-       list = new elemType[maxSize];		   
-	   assert(list != NULL);			   
-       for (int i = 0; i < length; i++)	   
-	   	    list[i] = otherList.list[i];	   
+	{
+	   delete [] list;
+	   maxSize = otherList.maxSize;
+       length = otherList.length;
+       list = new elemType[maxSize];
+	   assert(list != NULL);
+       for (int i = 0; i < length; i++)
+	   	    list[i] = otherList.list[i];
 	}
-    return *this;					   	   
+    return *this;
 }
